@@ -345,16 +345,98 @@
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
   }
+  .mqwrap{padding:16px 12px 20px;width:100%;box-sizing:border-box;font-family:'Cinzel','Times New Roman',serif;}
+.arch-top{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:52px;}
+.gold-line{height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:0;}
+.mqbody{display:flex;align-items:stretch;gap:6px;}
+.saber-col{display:flex;flex-direction:row;gap:5px;padding:4px 2px;}
+.saber-bar{width:5px;border-radius:3px;min-height:150px;flex:1;}
+.sb-blue{background:#4fc3f7;box-shadow:0 0 8px #4fc3f7,0 0 16px rgba(79,195,247,0.3);animation:sp 2.2s ease-in-out infinite;}
+.sb-red{background:#ef5350;box-shadow:0 0 8px #ef5350,0 0 16px rgba(239,83,80,0.3);animation:sp 2.2s ease-in-out infinite 0.7s;}
+.sb-green{background:#66bb6a;box-shadow:0 0 8px #66bb6a,0 0 16px rgba(102,187,106,0.3);animation:sp 2.2s ease-in-out infinite 1.4s;}
+@keyframes sp{0%,100%{opacity:1}50%{opacity:0.55}}
+.mqcenter{flex:1;border:1px solid rgba(212,175,55,0.4);border-top:none;display:flex;flex-direction:column;}
+.strip-now{background:#0a0a18;border-bottom:1px solid rgba(212,175,55,0.3);text-align:center;padding:6px 8px;}
+.strip-label{display:block;font-size:8px;letter-spacing:5px;color:rgba(212,175,55,0.4);margin-bottom:3px;}
+.strip-text{font-size:10px;letter-spacing:3px;color:rgba(212,175,55,0.85);font-weight:700;}
+.chase-row{display:flex;justify-content:center;align-items:center;gap:5px;padding:6px 10px;background:#040410;border-top:1px solid rgba(212,175,55,0.2);border-bottom:1px solid rgba(212,175,55,0.2);flex-wrap:wrap;}
+.bulb{width:8px;height:8px;border-radius:50%;background:#0c0c22;border:1px solid #1a1a30;flex-shrink:0;transition:background 0.12s,box-shadow 0.12s;}
+.bulb.lb{background:#4fc3f7;box-shadow:0 0 5px #4fc3f7;border-color:transparent;}
+.bulb.lr{background:#ef5350;box-shadow:0 0 5px #ef5350;border-color:transparent;}
+.bulb.lg{background:#66bb6a;box-shadow:0 0 5px #66bb6a;border-color:transparent;}
+.bulb.lo{background:#d4af37;box-shadow:0 0 5px #d4af37;border-color:transparent;}
+.mq-title{background:#040410;text-align:center;padding:20px 12px;color:#d4af37;font-size:clamp(16px,4vw,30px);font-weight:900;letter-spacing:4px;line-height:1.35;text-shadow:0 0 24px rgba(212,175,55,0.4);flex:1;display:flex;align-items:center;justify-content:center;}
+.strip-soon{background:#0a0a18;border-top:1px solid rgba(212,175,55,0.15);text-align:center;padding:6px 8px;}
+.strip-soon .strip-label{color:rgba(138,122,58,0.4);}
+.strip-soon .strip-text{font-size:9px;letter-spacing:3px;color:rgba(138,122,58,0.7);}
 </style>
 </head>
 <body>
 <div class="starfield"></div>
 <div class="container">
-  <div class="title-block">
-    <div class="episode">Jedi Archives — Nomenclature Division</div>
-    <h1>Star Wars Name Generator</h1>
-    <div class="subtitle">Choose your initials. The Force will handle the rest.</div>
+<div class="mqwrap">
+  <div class="arch-top">
+    <div style="width:3px;height:14px;background:#1a1205;"></div>
+    <div style="width:4px;height:20px;background:#3a2a08;"></div>
+    <div style="width:5px;height:28px;background:#5a4010;"></div>
+    <div style="width:6px;height:36px;background:#8a6a1a;"></div>
+    <div style="width:8px;height:44px;background:#b08820;"></div>
+    <div style="width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:52px solid #d4af37;"></div>
+    <div style="width:8px;height:44px;background:#b08820;"></div>
+    <div style="width:6px;height:36px;background:#8a6a1a;"></div>
+    <div style="width:5px;height:28px;background:#5a4010;"></div>
+    <div style="width:4px;height:20px;background:#3a2a08;"></div>
+    <div style="width:3px;height:14px;background:#1a1205;"></div>
   </div>
+  <div class="gold-line"></div>
+  <div class="mqbody">
+    <div class="saber-col">
+      <div class="saber-bar sb-blue"></div>
+      <div class="saber-bar sb-red"></div>
+      <div class="saber-bar sb-green"></div>
+    </div>
+    <div class="mqcenter">
+      <div class="strip-now">
+        <span class="strip-label">NOW SHOWING</span>
+        <span class="strip-text">JEDI ARCHIVES — NOMENCLATURE DIVISION</span>
+      </div>
+      <div class="chase-row" id="mqChaseTop"></div>
+      <div class="mq-title">STAR WARS<br>NAME GENERATOR</div>
+      <div class="chase-row" id="mqChaseBot"></div>
+      <div class="strip-soon">
+        <span class="strip-label">COMING ATTRACTIONS</span>
+        <span class="strip-text">CHOOSE YOUR INITIALS — THE FORCE WILL HANDLE THE REST</span>
+      </div>
+    </div>
+    <div class="saber-col">
+      <div class="saber-bar sb-green"></div>
+      <div class="saber-bar sb-red"></div>
+      <div class="saber-bar sb-blue"></div>
+    </div>
+  </div>
+  <div class="gold-line"></div>
+</div>
+<script>
+(function(){
+  const N=22,LIT=4,COLS=['lb','lr','lg','lo'];
+  function fill(id){const c=document.getElementById(id);if(!c)return;for(let i=0;i<N;i++){const b=document.createElement('div');b.className='bulb';c.appendChild(b);}}
+  fill('mqChaseTop');fill('mqChaseBot');
+  let off=0,ci=0;
+  function tick(){
+    ['mqChaseTop','mqChaseBot'].forEach(function(id,ri){
+      const row=document.getElementById(id);if(!row)return;
+      const bulbs=row.querySelectorAll('.bulb');
+      bulbs.forEach(function(b,i){
+        b.className='bulb';
+        const eff=ri===1?(N-off)%N:off;
+        if((i+eff)%LIT===0){b.classList.add(COLS[(ci+Math.floor(i/LIT))%COLS.length]);}
+      });
+    });
+    off=(off+1)%LIT;if(off===0)ci=(ci+1)%COLS.length;
+  }
+  setInterval(tick,160);tick();
+})();
+</script>
 
   <div class="divider"><span class="divider-icon">✦</span></div>
 
